@@ -63,7 +63,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mListener.ClickItemMusic(mListSong.get(getPosition()).getmMp3());
+                    mListener.ClickItemMusic(getPosition());
                 }
             });
         }

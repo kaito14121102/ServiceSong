@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private SongService mSongService;
     private boolean mBound = false;
     public static final String SONG_NAME = "songname";
+    private static int mPositionSong = -1;
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         startSongService();
         init();
         clickItemSong();
+        
     }
 
 
@@ -94,8 +96,8 @@ public class MainActivity extends AppCompatActivity {
         mSongAdapter.setmListener(new ICallBack() {
             @Override
             public void ClickItemMusic(int positon) {
-                mSongService.playSong(getBaseContext(), positon);
-                Toast.makeText(MainActivity.this, positon + "", Toast.LENGTH_SHORT).show();
+                mPositionSong = positon;
+                mSongService.playSong(getBaseContext(), mListSong.get(positon).getmMp3());
             }
         });
     }
